@@ -1,24 +1,19 @@
 #!/usr/bin/env python3
-"""
-Module for Task 1 - Async Comprehension
-"""
-import asyncio
-from typing import List
+'''Async Comprehensions
+Imports async_generator from task 0 and then write
+a coroutine called async_comprehension that takes null arguments
 
-# Assuming async_generator is defined in the module named '0-async_generator'
-from 0-async_generator import async_generator
+coroutine collects 10 different numbers using an async
+comprehensing over async_generator, returns the 10 random
+numbers
+'''
 
-async def async_comprehension() -> List[float]:
-    """
-    Coroutine will collect 10 random numbers using an async comprehensing over async_generator, then return the 10 random numbers.
-    """
-    return [i async for i in async_generator()]
+import typing
 
-async def main():
-    """
-    Main function to print the return value of async_comprehension
-    """
-    print(await async_comprehension())
+async_generator = __import__('0-async_generator').async_generator
 
-# Running the main function
-asyncio.run(main())
+
+async def async_comprehension() -> typing.List[float]:
+    '''Makes list of 10 numbers from given 10-number generator
+    '''
+    return [rand async for rand in async_generator()]
