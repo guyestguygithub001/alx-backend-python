@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
 """
-Task 1: Async Comprehensions
-
-This script demonstrates the use of asynchronous comprehensions to generate a list of random numbers.
-The async_comprehension coroutine will asynchronously gather 10 random numbers produced by the async_generator function.
+Module for Task 1 - Async Comprehension
 """
+import asyncio
+from typing import List
 
-import typing
+# Assuming async_generator is defined in the module named '0-async_generator'
 from 0-async_generator import async_generator
 
-async def async_comprehension() -> typing.List[float]:
+async def async_comprehension() -> List[float]:
     """
-    Asynchronously generates a list of 10 random numbers.
-
-    This coroutine utilizes an asynchronous comprehension to iterate over the async_generator function,
-    which yields 10 random numbers, and collects them into a list.
-
-    Returns:
-        typing.List[float]: A list containing 10 randomly generated numbers.
+    Coroutine will collect 10 random numbers using an async comprehensing over async_generator, then return the 10 random numbers.
     """
-    return [rand async for rand in async_generator()]
+    return [i async for i in async_generator()]
+
+async def main():
+    """
+    Main function to print the return value of async_comprehension
+    """
+    print(await async_comprehension())
+
+# Running the main function
+asyncio.run(main())
